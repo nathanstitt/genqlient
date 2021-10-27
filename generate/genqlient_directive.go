@@ -210,9 +210,9 @@ func (dir *genqlientDirective) validate(node interface{}, schema *ast.Schema) er
 				return errorf(fieldDir.pos, "struct and flatten can't be used via for")
 			}
 
-			if fieldDir.Omitempty != nil && field.Type.NonNull {
-				return errorf(fieldDir.pos, "omitempty may only be used on optional arguments")
-			}
+			// if fieldDir.Omitempty != nil && field.Type.NonNull {
+			// 	return errorf(fieldDir.pos, "omitempty may only be used on optional arguments")
+			// }
 		}
 	}
 
@@ -239,9 +239,9 @@ func (dir *genqlientDirective) validate(node interface{}, schema *ast.Schema) er
 		// fragment.
 		return nil
 	case *ast.VariableDefinition:
-		if dir.Omitempty != nil && node.Type.NonNull {
-			return errorf(dir.pos, "omitempty may only be used on optional arguments")
-		}
+		// if dir.Omitempty != nil && node.Type.NonNull {
+		// 	return errorf(dir.pos, "omitempty may only be used on optional arguments")
+		// }
 
 		if dir.Struct != nil {
 			return errorf(dir.pos, "struct is only applicable to fields, not variable-definitions")
